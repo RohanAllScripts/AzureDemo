@@ -1,0 +1,69 @@
+﻿@model IEnumerable<DATALAYER.Models.UserStoredCredential>
+@{
+    ViewBag.Title = "homePage";
+}
+<div class="text-center">
+<H1>ADD</H1>
+<form action="#" method="post">
+    WEBSITE:<input type="text" id="username" name="Website" />
+    <br />
+    USERNAME:<input type="text" id="username" name="Username" />
+    <br />
+    PASSWORD:<input type="password" id="password" name="Password" />
+    <br />
+    <button id="save">SAVE</button>
+</form>
+</div>
+
+<div class="text-center">
+<h1>EDIT</h1>
+<form action="Edit" method="post">
+    <div class="text-center">
+        <select name="Id">
+            @foreach (var data in Model)
+            {
+                <option value="@data.Id">@data.Website</option>
+                  
+            }
+        </select>
+        <input type="text" name="Username" />
+        <input type="text" name="Password" />
+        <button id="save">UPDATE</button>
+    </div>
+</form>
+</div>
+
+<div class="text-center">
+<H1>DELETE</H1>
+<form action="Delete" method="post">
+    <div class="text-center">
+        <select name="Id">
+            @foreach (var data in Model)
+            {
+                <option value="@data.Id">@data.Website</option>
+            }
+        </select>
+        <td><button id="save">DELETE</button></td>
+    </div>
+
+    <div class="text-center">
+        <table>
+            <tr>
+                <th>WEBSITE</th>
+                <th>USERNAME</th>
+                <th>PASSWORD</th>
+            </tr>
+
+            @foreach (var data in Model)
+            {
+                <tr>
+                    <input type="hidden" name="Id" value="@data.Id">
+                    <td><input type="text" name="Webiste" value="@data.Website" /> </td>
+                    <td><input type="text" name="Username" value="@data.Username" /></td>
+                    <td><input type="text" name="Password" value="@data.Password" /></td>
+                </tr>
+            }
+        </table>
+    </div>
+</form>
+</div>
