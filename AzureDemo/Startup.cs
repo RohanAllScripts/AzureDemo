@@ -37,7 +37,7 @@ namespace AzureDemo
             services.AddDbContext<PasswordLockerContext>(
             options =>
             {
-                options.UseSqlServer("name=ConnectionStrings:PasswordLockerContext");
+                options.UseSqlServer("name=ConnectionStrings:PasswordLockerContext2");
             });
             services.AddTransient<IPasswordLockerRepo<User>, PasswordLockerRepo<User>>();
             services.AddTransient<IPasswordLockerRepo<UserStoredCredential>, PasswordLockerRepo<UserStoredCredential>>();
