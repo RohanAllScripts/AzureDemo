@@ -21,11 +21,6 @@ namespace AzureDemo
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                    webBuilder.ConfigureAppConfiguration(builder => 
-                        { 
-                            builder.AddAzureAppConfiguration("Endpoint=https://azuredemoappconfig.azconfig.io;Id=Q7EF;Secret=8rQHJpaJditOEVitEF8nemuLE8+ttF44fJHGt0PQGkw="); 
-                        }
-                   );
                 });
     }
 }
