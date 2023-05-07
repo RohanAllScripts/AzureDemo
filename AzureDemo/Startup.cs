@@ -14,6 +14,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
+using static System.Net.WebRequestMethods;
 
 namespace AzureDemo
 {
@@ -23,7 +25,8 @@ namespace AzureDemo
         {
             Configuration = configuration;
         }
-
+        
+        
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -34,6 +37,7 @@ namespace AzureDemo
             services.AddControllers();
             services.AddSession();
             services.AddRazorPages();
+            services.AddAzureAppConfiguration();
             services.AddDbContext<PasswordLockerContext>(
             options =>
             {
@@ -42,6 +46,7 @@ namespace AzureDemo
             services.AddTransient<IPasswordLockerRepo<User>, PasswordLockerRepo<User>>();
             services.AddTransient<IPasswordLockerRepo<UserStoredCredential>, PasswordLockerRepo<UserStoredCredential>>();
             services.AddTransient<IUserServices, UserServices>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,7 +67,7 @@ namespace AzureDemo
 
             app.UseRouting();
             app.UseSession();
-
+            
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
