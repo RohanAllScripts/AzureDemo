@@ -37,7 +37,6 @@ namespace AzureDemo
             services.AddControllers();
             services.AddSession();
             services.AddRazorPages();
-            services.AddAzureAppConfiguration();
             services.AddDbContext<PasswordLockerContext>(
             options =>
             {
